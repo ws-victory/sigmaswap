@@ -64,7 +64,7 @@ export const useSousHarvest = (sousId, isUsingBnb = false) => {
 }
 
 export const useAutoHarvest = () => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const { account } = useWallet()
   const vaultContract = useVault()
 

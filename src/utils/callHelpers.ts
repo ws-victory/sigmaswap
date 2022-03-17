@@ -127,13 +127,13 @@ export const harvest = async (masterChefContract, pid, account) => {
 }
 
 export const autoharvest = async (vaultContract, account) => {
-  let ref
+  // let ref
   if (cookies.get('ref')) {
     if (isAddress(rot13(cookies.get('ref')))) {
-      ref = rot13(cookies.get('ref'))
+      // ref = rot13(cookies.get('ref'))
     }
   } else {
-    ref = '0x0000000000000000000000000000000000000000'
+    // ref = '0x0000000000000000000000000000000000000000'
   }
   return vaultContract.methods
     .havest()

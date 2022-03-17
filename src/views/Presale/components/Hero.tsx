@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Text } from '@pancakeswap-libs/uikit'
+import { Heading } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
 import Container from 'components/layout/Container'
 
@@ -10,11 +10,11 @@ const Title = styled(Heading).attrs({ as: 'h1', size: 'xl' })`
   font-size: 32px;
 `
 
-const Blurb = styled(Text)`
-  color: ${({ theme }) => theme.colors.secondary};
-  font-size: 20px;
-  font-weight: 600;
-`
+// const Blurb = styled(Text)`
+//   color: ${({ theme }) => theme.colors.secondary};
+//   font-size: 20px;
+//   font-weight: 600;
+// `
 
 const StyledHero = styled.div`
   // background-image: linear-gradient(180deg, #53dee9 0%, #1fc7d4 100%);

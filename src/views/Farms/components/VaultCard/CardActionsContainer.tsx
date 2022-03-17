@@ -3,25 +3,25 @@ import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
 import { provider } from 'web3-core'
 import { getContract } from 'utils/erc20'
-import { Button, Flex, Text, ToastContainer, Heading } from '@pancakeswap-libs/uikit'
+import { Button, Flex, Text, Heading } from '@pancakeswap-libs/uikit'
 import { Farm } from 'state/types'
-import { useFarmFromPid, useFarmUser, usePriceCakeBusd } from 'state/hooks'
+import { useFarmFromPid, useFarmUser } from 'state/hooks'
 import useI18n from 'hooks/useI18n'
 import UnlockButton from 'components/UnlockButton'
 import { useAutoApprove } from 'hooks/useApprove'
 import StakeAction from './StakeAction'
-import HarvestAction from './HarvestAction'
+// import HarvestAction from './HarvestAction'
 
 const Action = styled.div`
   padding-top: 16px;
 `
-const ToastContainerSticky = styled(ToastContainer)`
-  position: absolute;
-`
-const Label = styled.div`
-  color: ${({ theme }) => theme.colors.textSubtle};
-  font-size: 12px;
-`
+// const ToastContainerSticky = styled(ToastContainer)`
+//   position: absolute;
+// `
+// const Label = styled.div`
+//   color: ${({ theme }) => theme.colors.textSubtle};
+//   font-size: 12px;
+// `
 export interface FarmWithStakedValue extends Farm {
   apy?: BigNumber
 }
@@ -38,14 +38,14 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
 
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { pid, lpAddresses, tokenAddresses, isTokenOnly, depositFeeBP } = useFarmFromPid(farm.pid)
-  console.log(pid)
-  const { allowance, tokenBalance, stakedBalance, earnings } = useFarmUser(pid)
-  console.log(allowance)
+  // console.log(pid)
+  const { allowance, tokenBalance, stakedBalance } = useFarmUser(pid)
+  // console.log(allowance)
   const lpAddress = lpAddresses[process.env.REACT_APP_CHAIN_ID]
   const tokenAddress = tokenAddresses[process.env.REACT_APP_CHAIN_ID]
   const lpName = farm.lpSymbol.toUpperCase()
   const isApproved = account && allowance && allowance.isGreaterThan(0)
-  const cakePrice = usePriceCakeBusd()
+  // const cakePrice = usePriceCakeBusd()
   const lpContract = useMemo(() => {
     if (isTokenOnly) {
       return getContract(ethereum as provider, tokenAddress)
@@ -72,7 +72,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
   }
 
   const profit = 0
-  console.log(isApproved)
+  // console.log(isApproved)
   const renderApprovalOrStakeButton = () => {
     return isApproved ? (
       <StakeAction

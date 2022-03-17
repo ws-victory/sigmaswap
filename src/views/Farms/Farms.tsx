@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { Image, Heading } from '@pancakeswap-libs/uikit'
+import { Heading } from '@pancakeswap-libs/uikit'
 import { BLOCKS_PER_YEAR, BLOCKS_PER_DAY } from 'config'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
@@ -13,14 +13,14 @@ import {
   usePriceBnbBusd,
   usePriceCakeBusd,
   usePriceWethBusd,
-  usePriceBtcBusd,
+  // usePriceBtcBusd,
   usePriceRouteBusd,
 } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import { QuoteToken } from 'config/constants/types'
 import useI18n from 'hooks/useI18n'
-import Background from '../Background'
+// import Background from '../Background'
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import FarmTabButtons from './components/FarmTabButtons'
 import Divider from './components/Divider'
@@ -37,7 +37,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const cakePrice = usePriceCakeBusd()
   const bnbPrice = usePriceBnbBusd()
   const wethPrice = usePriceWethBusd()
-  const btcPrice = usePriceBtcBusd()
+  // const btcPrice = usePriceBtcBusd()
   const routePrice = usePriceRouteBusd()
   const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
   const { tokenMode } = farmsProps

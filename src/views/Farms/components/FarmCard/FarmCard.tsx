@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import BigNumber from 'bignumber.js'
 import styled, { keyframes } from 'styled-components'
 import { Flex, Text, Skeleton } from '@pancakeswap-libs/uikit'
-import { communityFarms } from 'config/constants'
+// import { communityFarms } from 'config/constants'
 import { Farm } from 'state/types'
 import { provider } from 'web3-core'
 import useI18n from 'hooks/useI18n'
@@ -203,7 +203,7 @@ const FarmCard: React.FC<FarmCardProps> = ({
 
   farmAPY = formatted
 
-  const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, risk, lpSymbol } = farm
+  const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, risk } = farm
   return (
     <FCard>
       {farm.tokenSymbol === 'SIGMA' && <StyledCardAccent />}

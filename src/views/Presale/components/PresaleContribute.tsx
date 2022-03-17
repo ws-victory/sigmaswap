@@ -10,7 +10,6 @@ import UnlockButton from 'components/UnlockButton'
 import { usePreSaleApprove } from 'hooks/useApprove'
 import { usePreSaleAllowance } from 'hooks/useAllowance'
 import { getBalanceNumber } from 'utils/formatBalance'
-import useI18n from 'hooks/useI18n'
 import CardValue from 'views/Home/components/CardValue'
 import Spacer from 'components/Spacer'
 import LabelButton from './LabelButton'
@@ -56,15 +55,7 @@ export interface Props {
   tokenDecimals: number
 }
 
-const PresaleContribute: React.FC<Props> = ({
-  address,
-  currency,
-  currencyAddress,
-  contract,
-  status,
-  raisingAmount,
-  tokenDecimals,
-}) => {
+const PresaleContribute: React.FC<Props> = ({ address, currency, currencyAddress, contract, tokenDecimals }) => {
   const [pendingTx, setPendingTx] = useState(false)
   const [claimTokenBalance, setClaimTokenBalance] = useState(new BigNumber(0))
   const [claimed, setClaimed] = useState(false)
@@ -77,14 +68,11 @@ const PresaleContribute: React.FC<Props> = ({
   const [totalSoldToken, setTotalSoldToken] = useState(new BigNumber(0))
   const [leftToken, setLeftToken] = useState(new BigNumber(0))
   const contractRaisingToken = useERC20(currencyAddress)
-  console.log('_debug', contractRaisingToken)
   const allowance = usePreSaleAllowance(contractRaisingToken, address, pendingTx)
   const onApprove = usePreSaleApprove(contractRaisingToken, address)
   const [onPresentContributeModal] = useModal(
     <ContributeModal currency={currency} contract={contract} currencyAddress={currencyAddress} />,
   )
-
-  const TranslateString = useI18n()
 
   useEffect(() => {
     const fetch = async () => {
@@ -124,7 +112,6 @@ const PresaleContribute: React.FC<Props> = ({
     setPendingTx(false)
   }
   const isFinished = false
-  console.log('_debug', isActive)
 
   return (
     <>

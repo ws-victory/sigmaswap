@@ -1,9 +1,9 @@
 import BigNumber from 'bignumber.js'
 import axios from 'axios'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
-import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync } from './actions'
+import { fetchFarmsPublicDataAsync, fetchPoolsUserDataAsync } from './actions'
 import { State, Farm, Pool } from './types'
 import { QuoteToken } from '../config/constants/types'
 
@@ -67,7 +67,7 @@ export const usePoolFromPid = (sousId): Pool => {
 }
 
 // Prices
-const useFetch = (url, options) => {
+const useFetch = (url) => {
   const [data, setData] = React.useState({
     response: null,
     route: null,
@@ -102,7 +102,7 @@ export const usePriceCakeBusd = (): BigNumber => {
 }
 export const usePriceWethBusd = (): BigNumber => {
   const url = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd'
-  const { data, err } = useFetch(url, null)
+  const { data } = useFetch(url)
   let output = new BigNumber(0)
   if (data.ethereum) {
     output = new BigNumber(data.ethereum.usd)
@@ -111,7 +111,7 @@ export const usePriceWethBusd = (): BigNumber => {
 }
 export const usePriceBtcBusd = (): BigNumber => {
   const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
-  const { data, err } = useFetch(url, null)
+  const { data } = useFetch(url)
   let output = new BigNumber(0)
   if (data.bitcoin) {
     output = new BigNumber(data.bitcoin.usd)
@@ -120,7 +120,7 @@ export const usePriceBtcBusd = (): BigNumber => {
 }
 export const usePriceRouteBusd = (): BigNumber => {
   const url = 'https://api.coingecko.com/api/v3/simple/price?ids=route&vs_currencies=usd'
-  const { data, err } = useFetch(url, null)
+  const { data } = useFetch(url)
   let output = new BigNumber(0)
   if (data.route) {
     output = new BigNumber(data.route.usd)
@@ -132,7 +132,7 @@ export const useTotalValue = (): BigNumber => {
   const farms = useFarms()
   const bnbPrice = usePriceBnbBusd()
   const cakePrice = usePriceCakeBusd()
-  const ethPrice = usePriceWethBusd()
+  // const ethPrice = usePriceWethBusd()
   const btcPrice = usePriceWethBusd()
   let value = new BigNumber(0)
 

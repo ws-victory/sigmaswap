@@ -178,7 +178,7 @@ const VaultCard: React.FC<FarmCardProps> = ({ farm, cakePrice, ethereum, account
 
   farmAPY = formatted
 
-  const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, risk, lpSymbol } = farm
+  const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, risk } = farm
   return (
     <FCard>
       {farm.tokenSymbol === 'SIGMA' && <StyledCardAccent />}
